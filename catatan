@@ -1,0 +1,12 @@
+Api Testing jsonSchema:
+
+Permintaan GET dilakukan menggunakan Axios.
+
+
+Permintaan POST dilakukan menggunakan Axios dengan mengirimkan data baru (newData) yang ingin ditambahkan.
+
+
+Permintaan PUT dilakukan menggunakan Axios dengan mengirimkan data pembaruan (updateData).
+
+
+Permintaan DELETE dilakukan menggunakan Axios.
