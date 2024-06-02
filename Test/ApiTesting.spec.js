@@ -16,7 +16,7 @@ describe('GET Api Testing jsonSchema', function () {
 describe('POST Api Testing jsonSchema', function () {
     it('2. Post Api Todos/Add', async function () {
         const newData = { 
-            todo: 'New Todo', 
+            todo: 'New Todo Alya Awalia', 
             userId: 8 
         }
 
@@ -40,7 +40,7 @@ describe('POST Api Testing jsonSchema', function () {
 describe('PUT Api Testing jsonSchema', function () {
     it('3. Put Api Todos/1', async function () {
         const updateData = { 
-            todo: 'Updated Todo', 
+            todo: 'Updated Todo Alya Awalia', 
             completed: true 
         }
         const res = await axios.put('https://dummyjson.com/todos/1', updateData)
