@@ -19,7 +19,7 @@ export const PostSchema = {
         completed: { type: 'boolean' }
     }
 }
-// kenapa kalo ditulis items: GetSchema
+// kenapa kalo ditulis items: PostSchema
 //muncul strict mode: missing type "array" for keyword "items" at "#" (strictTypes).
 
 export const PutSchema = {

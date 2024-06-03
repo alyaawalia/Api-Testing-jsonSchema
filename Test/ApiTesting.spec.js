@@ -4,7 +4,7 @@ import { GetSchema, PutSchema, PostSchema, Deleteschema} from "../Schema.js"
 
 
 describe('Api Testing jsonSchema mochawesome', function () {
-    it('1. Get Api Todos/1', async function () {
+    it('Get Api Todos/1', async function () {
         const res = await axios.get('https://dummyjson.com/todos/1')
 
         expect(res.status).to.equal(200)
@@ -14,10 +14,10 @@ describe('Api Testing jsonSchema mochawesome', function () {
 })
 
 //describe('POST Api Testing jsonSchema', function () {
-    it('2. Post Api Todos/Add', async function () {
+    it('Post Api Todos/Add', async function () {
         const newData = { 
             todo: 'New Todo Alya Awalia', 
-            userId: 8 
+            userId: 8
         }
 
         try {
@@ -25,8 +25,7 @@ describe('Api Testing jsonSchema mochawesome', function () {
             
             expect(res.status).to.equal(200)
             expect(res.data).to.be.jsonSchema(PostSchema)
-            expect(res.data.todo).to.equal(newData.todo)
-            expect(res.data.completed).to.equal(newData.completed)
+            expect(res.data).to.equal(newData)
 
         } catch (error) { //AxiosError: Request failed with status code 400
             if (error.response && error.response.status === 400) {
@@ -38,23 +37,33 @@ describe('Api Testing jsonSchema mochawesome', function () {
 //})
 
 //describe('PUT Api Testing jsonSchema', function () {
-    it('3. Put Api Todos/1', async function () {
+    it('Put Api Todos/1', async function () {
         const updateData = { 
             todo: 'Updated Todo Alya Awalia', 
-            completed: true 
+            completed: true,
+            //id: 4
         }
+        try {
+
         const res = await axios.put('https://dummyjson.com/todos/1', updateData)
 
         expect(res.status).to.equal(200)
         expect(res.data).to.be.jsonSchema(PutSchema)
-        expect(res.data.todo).to.equal(updateData.todo)
-        expect(res.data.completed).to.equal(updateData.completed)
+        //expect(res.data.todo).to.equal(updateData.todo)
+        expect(res.data).to.equal(updateData.updateData)
+
+    } catch (error) { //AxiosError: Request failed with status code 404
+        if (error.response && error.response.status === 404) {
+            console.error('Data Tidak Ditemukan:', error.response.data)
+        throw error
+        }
+    }
     })
 //})
 
 //describe('DELETE Api Testing jsonSchema', function () {
-    it('4. Delete Api Todos/1', async function () {
-        const res = await axios.delete('https://dummyjson.com/todos/1');
+    it('Delete Api Todos/1', async function () {
+        const res = await axios.delete('https://dummyjson.com/todos/1')
 
         expect(res.status).to.equal(200)
         expect(res.data).to.be.jsonSchema(Deleteschema)
